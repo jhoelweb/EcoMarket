@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -41,7 +42,6 @@ android {
 }
 
 dependencies {
-
     // Jetpack Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    // Google ML Kit - Traducción automática
+    implementation("com.google.mlkit:translate:17.0.3")
 
     // AndroidX
     implementation(libs.androidx.core.ktx)
@@ -61,11 +63,16 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
 
-    // Coil - Imagenes
+    // Coil - Imágenes
     implementation(libs.coil.compose)
 
     // Navigation Compose
     implementation(libs.androidx.navigation.compose)
+
+    // Room - Base de datos local
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     // Pruebas unitarias
     testImplementation(libs.junit)
